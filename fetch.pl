@@ -25,8 +25,13 @@ sub trim {
 sub xml_date {
 	my $data = shift;
 
-	my $date = sprintf("%04d-%02d-%02d %02d:%02d",
-			@{$data}{qw(observation_year observation_month_number observation_day observation_hour observation_minute)});
+	my $date = sprintf("%04d-%02d-%02d %02d:%02d", @{$data}{qw(
+		observation_year
+		observation_month_number
+		observation_day
+		observation_hour
+		observation_minute
+	)});
 
 	return Class::Date->new($date);
 }
