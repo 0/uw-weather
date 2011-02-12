@@ -4,7 +4,9 @@ Fetches the latest data from the [University of Waterloo Weather Station](http:/
 
 # Why?
 
-For displaying using some other means. For example, `perl fetch.pl | xmessage -default okay -center -file -` can be mapped to a key combination in the window manager.
+For displaying using some other means. For example, `perl fetch.pl | xmessage -default okay -center -file -` can be mapped to a key combination in the window manager, producing:
+
+![an informative window](http://0.github.com/uw-weather/screenshot.png).
 
 # How?
 
