@@ -88,7 +88,12 @@ if ($do_fetch) {
 ### Display data.
 ## Time
 my ($hr, $min) = (localtime(time()))[2,1];
-printf("%02d:%02d (%d s)\n", $hr, $min, now() - xml_date($data));
+printf("%02d:%02d", $hr, $min);
+my $age = now() - xml_date($data);
+if ($age > $cache_timeout) {
+	printf(" (%d s)\n", $age);
+}
+printf("\n");
 ## Temperature
 printf("%.1f C", $data->{temperature_current_C});
 if ($data->{humidex_C} =~ /^[-.\d ]+$/) {
