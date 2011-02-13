@@ -107,12 +107,12 @@ if ($data->{humidex_C} =~ /^[-.\d ]+$/) {
 	printf(" (%.1f C)", $data->{windchill_C});
 }
 printf("\n");
-## Precipitation
-# TODO
+## Max/min temp
+printf("%.1f C / %.1f C\n", @{$data}{qw(temperature_24hrmax_C temperature_24hrmin_C)});
 ## Wind
 printf("%.1f km/h %s\n", $data->{wind_speed_kph}, trim($data->{wind_direction}));
-## Max/min temp
-# TODO
+## Precipitation
+printf("%.1f mm / %.1f mm\n", @{$data}{qw(precipitation_1hr_mm precipitation_24hr_mm)});
 ## Humidity
 printf("%.1f %%RH\n", $data->{relative_humidity_percent});
 ## Pressure
