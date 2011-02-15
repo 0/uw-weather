@@ -94,9 +94,20 @@ if ($do_fetch) {
 ## Time
 my ($hr, $min) = (localtime(time()))[2,1];
 printf("%02d:%02d", $hr, $min);
+# Cache age
 my $age = now() - xml_date($data);
 if ($age > $cache_timeout) {
-	printf(" (%d s)\n", $age);
+	printf(" (");
+	if ($age->day() >= 1) {
+		printf("%d day", $age->day());
+	} elsif ($age->hour() >= 1) {
+		printf("%d hr", $age->hour());
+	} elsif ($age->min() >= 1) {
+		printf("%d min", $age->min());
+	} else {
+		printf("%d s", $age->sec());
+	}
+	printf(")");
 }
 printf("\n");
 ## Temperature
