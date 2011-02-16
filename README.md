@@ -18,6 +18,6 @@ The script takes no arguments and outputs values in the following format:
     current temperature (humidex/windchill)
     24 hour max / min temperature
     wind speed & direction
-    precipitation per 1 hour / 24 hours
+    precipitation per 15 minutes / 1 hour / 24 hours
     relative humidity
     pressure value & trend
