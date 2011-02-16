@@ -16,7 +16,7 @@ The script takes no arguments and outputs values in the following format:
 
     current time (age of cache)
     current temperature (humidex/windchill)
-    max / min daily temperature
+    24 hour max / min temperature
     wind speed & direction
     precipitation per 1 hour / 24 hours
     relative humidity
