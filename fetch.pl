@@ -25,7 +25,7 @@ sub trim {
 sub xml_date {
 	my $data = shift;
 
-	my $date = sprintf("%04d-%02d-%02d %02d:%02d", @{$data}{qw(
+	my $date = sprintf('%04d-%02d-%02d %02d:%02d', @{$data}{qw(
 		observation_year
 		observation_month_number
 		observation_day
@@ -74,7 +74,7 @@ if ($do_fetch) {
 		if ($cache_avail) {
 			$data = $cache_data;
 		} else {
-			my $msg = "No data to display";
+			my $msg = 'No data to display';
 			print "$msg\n";
 			die $msg;
 		}
@@ -83,7 +83,7 @@ if ($do_fetch) {
 			print { $cache_ } $xml;
 			close($cache_);
 		} else {
-			my $msg = "Cannot open cache for writing";
+			my $msg = 'Cannot open cache for writing';
 			print $msg, "\n\n";
 			warn $msg;
 		}
@@ -93,29 +93,29 @@ if ($do_fetch) {
 ### Display data.
 ## Time
 my ($hr, $min) = (localtime(time()))[2,1];
-printf("%02d:%02d", $hr, $min);
+printf('%02d:%02d', $hr, $min);
 # Cache age
 my $age = now() - xml_date($data);
 if ($age > $cache_timeout) {
-	printf(" (");
+	printf(' (');
 	if ($age->day() >= 1) {
-		printf("%d day%s", $age->day(), $age->day() > 1 ? "s" : "");
+		printf('%d day%s', $age->day(), $age->day() > 1 ? 's' : '');
 	} elsif ($age->hour() >= 1) {
-		printf("%d hr", $age->hour());
+		printf('%d hr', $age->hour());
 	} elsif ($age->min() >= 1) {
-		printf("%d min", $age->min());
+		printf('%d min', $age->min());
 	} else {
-		printf("%d s", $age->sec());
+		printf('%d s', $age->sec());
 	}
-	printf(")");
+	printf(')');
 }
 printf("\n");
 ## Temperature
-printf("%.1f C", $data->{temperature_current_C});
+printf('%.1f C', $data->{temperature_current_C});
 if ($data->{humidex_C} =~ /^[-.\d ]+$/) {
-	printf(" (%.1f C)", $data->{humidex_C});
+	printf(' (%.1f C)', $data->{humidex_C});
 } elsif ($data->{windchill_C} =~ /^[-.\d ]+$/) {
-	printf(" (%.1f C)", $data->{windchill_C});
+	printf(' (%.1f C)', $data->{windchill_C});
 }
 printf("\n");
 ## Max/min temp
@@ -124,7 +124,7 @@ printf("%.1f C / %.1f C\n", @{$data}{qw(temperature_24hrmax_C temperature_24hrmi
 printf("%.1f km/h %s\n", $data->{wind_speed_kph}, trim($data->{wind_direction}));
 ## Precipitation
 if ($data->{precipitation_15minutes_mm} =~ /^[-.\d ]+$/) {
-	printf("%.1f mm / ");
+	printf('%.1f mm / ');
 }
 printf("%.1f mm / %.1f mm\n", @{$data}{qw(precipitation_1hr_mm precipitation_24hr_mm)});
 ## Humidity
