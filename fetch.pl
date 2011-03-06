@@ -99,7 +99,7 @@ my $age = now() - xml_date($data);
 if ($age > $cache_timeout) {
 	printf(" (");
 	if ($age->day() >= 1) {
-		printf("%d day", $age->day());
+		printf("%d day%s", $age->day(), $age->day() > 1 ? "s" : "");
 	} elsif ($age->hour() >= 1) {
 		printf("%d hr", $age->hour());
 	} elsif ($age->min() >= 1) {
